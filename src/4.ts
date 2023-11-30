@@ -12,14 +12,15 @@ class Key implements IKey {
     this.signature = Math.random();
   }
 
-  getSignature() {
+  getSignature(): number {
     return this.signature;
   }
 }
 
 class Person implements IPerson {
   constructor(private key: IKey) {}
-  getKey() {
+
+  getKey(): IKey {
     return this.key;
   }
 }
@@ -33,7 +34,7 @@ abstract class House {
     this.key = key;
   }
 
-  comeIn(person: Person) {
+  comeIn(person: Person): void {
     if (this.doorIsOpen) {
       this.tenants.push(person);
     }
@@ -47,7 +48,7 @@ class MyHouse extends House {
     super(key);
   }
 
-  openDoor(key: IKey) {
+  openDoor(key: IKey): void {
     if (this.key === key) {
       this.doorIsOpen = true;
     }
